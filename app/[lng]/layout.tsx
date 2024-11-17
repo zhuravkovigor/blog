@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "../globals.css";
 import { languages } from "../i18n/settings";
 import { dir } from "i18next";
+import Header from "@/components/parts/Header";
 
 const gilroyFont = localFont({
   src: [
@@ -38,7 +39,14 @@ export default async function RootLayout({
 
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body className={`${gilroyFont.className} antialiased`}>{children}</body>
+      <head />
+
+      <body
+        className={`${gilroyFont.className} bg-body text-zinc-300 antialiased`}
+      >
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
