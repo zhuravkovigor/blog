@@ -6,7 +6,7 @@ import BookmarkIcon from "../icons/BookmarkIcon";
 
 export default function Navigation() {
   return (
-    <div className="bg-zinc-800/40 flex items-center gap-2 backdrop-blur-lg fixed p-2 border border-white/5 rounded-full bottom-12 left-1/2 -translate-x-1/2">
+    <div className="bg-zinc-800/40 z-20 flex items-center gap-2 backdrop-blur-lg fixed p-2 border border-white/5 rounded-full bottom-12 left-1/2 -translate-x-1/2">
       <Link
         href="/"
         className="bg-white/5 w-[50px] border border-white/5 h-[50px] flex justify-center rounded-full items-center"
@@ -26,10 +26,10 @@ export default function Navigation() {
       <div className="w-[2px] h-[30px] bg-white/15" />
 
       <div className="flex gap-1">
-        <div className="w-[50px] hover:bg-white/5 cursor-pointer h-[50px] flex justify-center rounded-full items-center">
+        <div className="w-[50px] active:scale-90 hover:border-white/5 border-transparent border transition duration-300 hover:bg-white/5 cursor-pointer h-[50px] flex justify-center rounded-full items-center">
           <DarkModeIcon className="w-6" />
         </div>
-        <div className="w-[50px] hover:bg-white/5 cursor-pointer h-[50px] flex justify-center rounded-full items-center">
+        <div className="w-[50px] active:scale-90 hover:border-white/5 border-transparent border transition duration-300 hover:bg-white/5 cursor-pointer h-[50px] flex justify-center rounded-full items-center">
           <BookmarkIcon className="w-6" />
         </div>
       </div>

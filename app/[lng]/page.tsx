@@ -1,6 +1,7 @@
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import OpenNewTabIcon from "@/components/icons/OpenNewTabIcon";
 import TwitterIcon from "@/components/icons/TwitterIcon";
+import Article from "@/components/ui/Article";
 import Button from "@/components/ui/Button";
 import IconButton from "@/components/ui/IconButton";
 import { Metadata } from "next";
@@ -27,16 +28,25 @@ export default function Home() {
         <span className="text-white/40">
           Here I share my great experience with other people as well as actively
           expert and demonstrate my finds found. I spend the main examiners over{" "}
-          <Link href="/" className="text-white underline">
+          <Link
+            href="/"
+            className="text-white underline bg-white/10 hover:bg-white/20 transition duration-300 rounded-xl p-1.5"
+          >
             #react
           </Link>
           ,{" "}
-          <Link href="/" className="text-white underline">
+          <Link
+            href="/"
+            className="text-white underline bg-white/10 hover:bg-white/20 transition duration-300 rounded-xl p-1.5"
+          >
             #framer-motion
           </Link>{" "}
           and{" "}
-          <Link href="/" className="text-white underline">
-            next.js.
+          <Link
+            href="/"
+            className="text-white underline bg-white/10 hover:bg-white/20 transition duration-300 rounded-xl p-1.5"
+          >
+            #next.js.
           </Link>
         </span>
       </h2>
@@ -49,6 +59,21 @@ export default function Home() {
         <IconButton>
           <TwitterIcon className="w-5" />
         </IconButton>
+      </div>
+
+      <div className="mt-[120px]">
+        <h2 className="text-2xl font-bold">All Articles</h2>
+      </div>
+
+      <div className="mt-[60px]">
+        <h3 className="text-xl font-bold text-zinc-400">2024</h3>
+
+        <div className="mt-[40px]">
+          <Article href="/" />
+          <Article href="/" />
+          <Article href="/" />
+          <Article href="/" />
+        </div>
       </div>
     </div>
   );
