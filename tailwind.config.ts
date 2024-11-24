@@ -16,7 +16,8 @@ export default {
     },
     extend: {
       colors: {
-        body: "#090A0F",
+        body: "#1E1E1E",
+        primary: "#5C87F6",
       },
     },
   },

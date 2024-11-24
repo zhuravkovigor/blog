@@ -3,6 +3,7 @@ import "../globals.css";
 import { languages } from "../i18n/settings";
 import { dir } from "i18next";
 import Header from "@/components/parts/Header";
+import Navigation from "@/components/parts/Navigation";
 
 const gilroyFont = localFont({
   src: [
@@ -46,6 +47,8 @@ export default async function RootLayout({
       >
         <Header />
         {children}
+
+        <Navigation />
       </body>
     </html>
   );
