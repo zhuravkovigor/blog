@@ -3,5 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello, World")
+	var name = "Igor"
+	fmt.Println("Hello, " + name + "! server is hot realoading right now!")
 }
