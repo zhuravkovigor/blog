@@ -13,6 +13,7 @@ func GetCurrentCSSFile() string {
 	filePath := filepath.Join(currentDir, "static", "css", "current-css-file.txt")
 
 	content, err := os.ReadFile(filePath)
+	
 	if err != nil {
 		// Если файл не найден, проверяем наличие styles.css
 		stylesPath := filepath.Join(currentDir, "static", "css", "styles.css")
@@ -24,6 +25,7 @@ func GetCurrentCSSFile() string {
 	}
 
 	fileName := strings.TrimSpace(string(content))
+
 	if fileName == "" {
 		return "styles.css"
 	}
