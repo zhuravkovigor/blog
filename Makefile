@@ -47,3 +47,7 @@ build:
 	@go build -o ./tmp/main $(SERVER_DIR)/main.go
 	@echo "✅ Build complete!"
 
+
+preview:
+	@echo "🔍 Previewing the project..."
+	./tmp/main
