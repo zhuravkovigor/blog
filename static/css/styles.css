@@ -198,6 +198,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-32 {
+    margin-top: calc(var(--spacing) * 32);
+  }
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
   }
@@ -231,12 +234,6 @@
   }
   .bg-black {
     background-color: var(--color-black);
-  }
-  .bg-green-800 {
-    background-color: var(--color-green-800);
-  }
-  .bg-red-200 {
-    background-color: var(--color-red-200);
   }
   .bg-white {
     background-color: var(--color-white);
