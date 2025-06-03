@@ -1,27 +1,25 @@
 package handlers
 
 import (
-	"blog/internals/models"
+	"blog/internals/database"
 	"encoding/json"
+	"log"
 	"net/http"
 )
 
 func GetPosts(w http.ResponseWriter, r *http.Request) {
-	posts := []models.Post{
-		{
-			ID:        "1",
-			Title:     "First Post",
-			Content:   "This is the content of the first post.",
-			CreatedAt: "2023-10-01T12:00:00Z",
-			UpdatedAt: "2023-10-01T12:00:00Z",
-		},
+	posts, err := database.GetAllPosts()
+	if err != nil {
+		log.Printf("❌ Error fetching posts: %v", err)
+		http.Error(w, "Error fetching posts", http.StatusInternalServerError)
+		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 
-	err := json.NewEncoder(w).Encode(posts)
-
+	err = json.NewEncoder(w).Encode(posts)
 	if err != nil {
+		log.Printf("❌ Error encoding json: %v", err)
 		http.Error(w, "Error encoding json", http.StatusInternalServerError)
 		return
 	}

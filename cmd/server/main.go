@@ -1,8 +1,10 @@
 package main
 
 import (
+	"blog/internals/database"
 	"blog/internals/handlers"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 
@@ -11,15 +13,30 @@ import (
 
 func main() {
 	err := godotenv.Load()
-
 	if err != nil {
-		panic("❌ Error loading .env file")
+		log.Println("⚠️  Warning: .env file not found, using default values")
+	}
+
+	// Получаем путь к базе данных из переменных окружения или используем значение по умолчанию
+	dbPath := os.Getenv("DB_PATH")
+	if dbPath == "" {
+		dbPath = "./blog.db"
+	}
+
+	err = database.InitDB(dbPath)
+	if err != nil {
+		log.Fatalf("❌ Failed to initialize database: %v", err)
+	}
+	defer database.CloseDB()
+
+	err = database.CreateTables()
+	if err != nil {
+		log.Fatalf("❌ Failed to create tables: %v", err)
 	}
 
 	http.HandleFunc("GET /", handlers.GetHome)
 	http.HandleFunc("GET /posts", handlers.GetPosts)
 
-	// Обслуживание статических файлов
 	http.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
 	port := os.Getenv("PORT")

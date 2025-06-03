@@ -51,3 +51,21 @@ build:
 preview:
 	@echo "🔍 Previewing the project..."
 	./tmp/main
+
+# Database commands
+seed:
+	@echo "🌱 Seeding database with fake data..."
+	@go run ./cmd/seed/main.go
+
+seed-clear:
+	@echo "🌱 Clearing database and seeding with fresh data..."
+	@go run ./cmd/seed/main.go -clear
+
+seed-custom:
+	@echo "🌱 Seeding database with custom amount of posts..."
+	@echo "Usage: make seed-custom COUNT=50"
+	@go run ./cmd/seed/main.go -count=$(or $(COUNT),20)
+
+db-clear:
+	@echo "🧹 Clearing all data from database..."
+	@go run ./cmd/seed/main.go -clear -count=0

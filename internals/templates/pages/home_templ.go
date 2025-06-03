@@ -9,8 +9,9 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import "blog/internals/templates/layouts"
+import "blog/internals/models"
 
-func HomePage() templ.Component {
+func HomePage(posts []models.Post) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -43,7 +44,43 @@ func HomePage() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"bg-red-200\"><div class=\"container mx-auto px-4 py-8\"><main class=\"max-w-4xl mx-auto\"><div class=\"grid md:grid-cols-2 lg:grid-cols-3 gap-6\"><article class=\"bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6\"><h2 class=\"text-xl font-semibold text-gray-800 mb-3\">Первая статья</h2><p class=\"text-gray-600 mb-4\">Краткое описание первой статьи в блоге.</p><a href=\"#\" class=\"text-blue-600 hover:text-blue-800 font-medium\">Читать далее →</a></article><article class=\"bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6\"><h2 class=\"text-xl font-semibold text-gray-800 mb-3\">Вторая статья</h2><p class=\"text-gray-600 mb-4\">Краткое описание второй статьи в блоге.</p><a href=\"#\" class=\"text-blue-600 hover:text-blue-800 font-medium\">Читать далее →</a></article><article class=\"bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6\"><h2 class=\"text-xl font-semibold text-gray-800 mb-3\">Третья статья</h2><p class=\"text-gray-600 mb-4\">Краткое описание третьей статьи в блоге.</p><a href=\"#\" class=\"text-blue-600 hover:text-blue-800 font-medium\">Читать далее →</a></article></div></main></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"bg-red-200\"><div class=\"container mx-auto px-4 py-8\"><main class=\"max-w-4xl mx-auto\"><div class=\"grid md:grid-cols-2 lg:grid-cols-3 gap-6\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, post := range posts {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<article class=\"bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6\"><h2 class=\"text-xl font-semibold text-gray-800 mb-3\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var3 string
+				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(post.Title)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internals/templates/pages/home.templ`, Line: 15, Col: 73}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</h2><p class=\"text-gray-600 mb-4\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var4 string
+				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(post.Content)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internals/templates/pages/home.templ`, Line: 16, Col: 52}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p><a href=\"/posts/{{ post.ID }}\" class=\"text-blue-600 hover:text-blue-800 font-medium\">Читать далее →</a></article>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></main></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
