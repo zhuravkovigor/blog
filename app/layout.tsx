@@ -1,3 +1,4 @@
+import Header from "@/components/parts/Header";
 import Navigation from "@/components/parts/Navigation";
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${rubik.variable} ${rubik.variable} antialiased`}>
+        <Header />
         {children}
         <Navigation />
       </body>
