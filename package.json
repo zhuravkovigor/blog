@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prisma:push": "prisma db push --accept-data-loss",
+    "prisma:studio": "prisma studio",
+    "prisma:seed": "prisma db seed",
     "dev": "next dev --turbopack",
+    "dev:studio": "concurrently \"next dev --turbopack\" \"prisma studio\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,17 +16,26 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^6.10.1",
-    "next": "15.3.4",
+    "@prisma/client": "^6.11.1",
+    "@prisma/extension-accelerate": "^2.0.1",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "next": "15.3.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "prisma": "^6.10.1",
+    "concurrently": "^9.2.0",
+    "prisma": "^6.11.1",
     "tailwindcss": "^4",
     "tsx": "^4.20.3",
     "typescript": "^5"

@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #080b0f;
+  --foreground: #171717;
 }
 
 @theme inline {
@@ -19,12 +19,162 @@
   }
 }
 
-html {
-  font-size: 62.5%; /* 1rem = 10px (10/16 = 62.5%) */
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-rubik), Helvetica, sans-serif;
+  font-family: var(--font-rubik);
+}
+
+/* Markdown styles */
+.prose {
+  line-height: 1.75;
+}
+
+.prose h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #f4f4f5;
+}
+
+.prose h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #f4f4f5;
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #f4f4f5;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  color: #d4d4d8;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  color: #d4d4d8;
+}
+
+.prose blockquote {
+  border-left: 4px solid #3f3f46;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #a1a1aa;
+}
+
+.prose code:not([class*="language-"]) {
+  background-color: #27272a;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #fbbf24;
+}
+
+.prose a {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  color: #93c5fd;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: #f4f4f5;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #3f3f46;
+  margin: 2rem 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  background-color: #18181b;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #3f3f46;
+}
+
+.prose th,
+.prose td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-right: 1px solid #3f3f46;
+  border-bottom: 1px solid #3f3f46;
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  border-right: none;
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose th {
+  background-color: #27272a;
+  font-weight: 600;
+  color: #f4f4f5;
+  border-bottom: 2px solid #3f3f46;
+}
+
+.prose td {
+  color: #d4d4d8;
+  background-color: #18181b;
+}
+
+.prose tbody tr:nth-child(even) td {
+  background-color: #202024;
+}
+
+.prose tbody tr:nth-child(odd) td {
+  background-color: #18181b;
+}
+
+.prose tbody tr:hover td {
+  background-color: #27272a !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Исключение стилей для SyntaxHighlighter */
+.prose [class*="language-"] {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+}
+
+.prose [class*="language-"] * {
+  background: transparent !important;
 }

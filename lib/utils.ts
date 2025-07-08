@@ -1,34 +1,53 @@
-import { defaultSizeUnit } from "./constants";
-import { UnitType } from "./types";
+import { DEFAULT_STYLE_UNIT_TYPE } from "./constants";
+import { AppRoutesType, AvailableUnits } from "./types";
 
-export function returnSizeWithUnit(
-  size: number,
-  unit: UnitType = defaultSizeUnit
-) {
-  return `${size}${unit}`;
+// convert data to 05-11
+export function formatShortDate(date: Date): string {
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${month}-${day}`;
 }
 
 export function classNames(
-  ...args: (
-    | string
-    | undefined
-    | null
-    | { [className: string]: boolean }
-    | (string | undefined | null)[]
-  )[]
-) {
-  return args
-    .flatMap((arg) => {
-      if (!arg) return [];
-      if (typeof arg === "string") return [arg];
-      if (Array.isArray(arg)) return arg.filter(Boolean) as string[];
-      if (typeof arg === "object") {
-        return Object.entries(arg)
-          .filter(([_, value]) => value)
+  ...classes: (string | undefined | { [key: string]: boolean | undefined })[]
+): string {
+  return classes
+    .flatMap((cls) => {
+      if (typeof cls === "string") return cls;
+      if (typeof cls === "object" && cls !== null) {
+        return Object.entries(cls)
+          .filter(([_, value]) => !!value)
           .map(([key]) => key);
       }
       return [];
     })
     .filter(Boolean)
     .join(" ");
+}
+
+export function createUrl(
+  url: AppRoutesType,
+  params?: Record<string, string | number | undefined>
+): string {
+  if (!params || Object.keys(params).length === 0) {
+    return url;
+  }
+
+  let result: string = url;
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined) {
+      result = result.replace(
+        new RegExp(`:${key}(?=/|$)`, "g"),
+        encodeURIComponent(String(value))
+      );
+    }
+  });
+  return result;
+}
+
+export function returnSizeWithUnit(
+  size: number,
+  unit: AvailableUnits = DEFAULT_STYLE_UNIT_TYPE
+) {
+  return `${size}${unit}`;
 }
