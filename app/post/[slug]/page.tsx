@@ -35,7 +35,7 @@ export default async function ({ params }: PageProps) {
                   const match = /language-(\w+)/.exec(className || "");
                   return match ? (
                     <div className="bg-zinc-900 p-1 mt-9 rounded-2xl border-2 border-zinc-800/50">
-                      <span className="text-xs px-2 py-2 block">
+                      <span className="text-xs px-2 py-2 block text-zinc-400 font-bold">
                         {match[1]}
                       </span>
                       <SyntaxHighlighter
