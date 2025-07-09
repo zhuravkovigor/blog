@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { DEFAULT_STYLE_UNIT_TYPE } from "./constants";
 import { AppRoutesType, AvailableUnits } from "./types";
 
@@ -50,4 +51,36 @@ export function returnSizeWithUnit(
   unit: AvailableUnits = DEFAULT_STYLE_UNIT_TYPE
 ) {
   return `${size}${unit}`;
+}
+
+export function extractTableHeaders(children: ReactNode): string[] {
+  let headers: string[] = [];
+
+  if (Array.isArray(children)) {
+    const thead = children.find((child: any) => child?.props?.children);
+    if (thead) {
+      const headerRow = Array.isArray(thead.props.children)
+        ? thead.props.children.find((row: any) => row?.props?.children)
+        : thead.props.children;
+
+      if (headerRow?.props?.children) {
+        const headerElements = Array.isArray(headerRow.props.children)
+          ? headerRow.props.children
+          : [headerRow.props.children];
+
+        headers = headerElements
+          .filter((header: any) => header?.props?.children)
+          .map((header: any) => {
+            const text =
+              typeof header.props.children === "string"
+                ? header.props.children
+                : String(header.props.children);
+            return text.trim();
+          })
+          .filter((text: any) => text.length > 0);
+      }
+    }
+  }
+
+  return headers;
 }
