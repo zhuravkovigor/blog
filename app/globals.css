@@ -110,61 +110,6 @@ body {
   margin: 2rem 0;
 }
 
-.prose table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 1.5rem 0;
-  background-color: #18181b;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid #3f3f46;
-}
-
-.prose th,
-.prose td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-right: 1px solid #3f3f46;
-  border-bottom: 1px solid #3f3f46;
-}
-
-.prose th:last-child,
-.prose td:last-child {
-  border-right: none;
-}
-
-.prose tr:last-child td {
-  border-bottom: none;
-}
-
-.prose th {
-  background-color: #27272a;
-  font-weight: 600;
-  color: #f4f4f5;
-  border-bottom: 2px solid #3f3f46;
-}
-
-.prose td {
-  color: #d4d4d8;
-  background-color: #18181b;
-}
-
-.prose tbody tr:nth-child(even) td {
-  background-color: #202024;
-}
-
-.prose tbody tr:nth-child(odd) td {
-  background-color: #18181b;
-}
-
-.prose tbody tr:hover td {
-  background-color: #27272a !important;
-  transition: background-color 0.2s ease;
-}
-
 /* Исключение стилей для SyntaxHighlighter */
 .prose [class*="language-"] {
   background: transparent !important;
@@ -177,4 +122,14 @@ body {
 
 .prose [class*="language-"] * {
   background: transparent !important;
+}
+
+/* last child remove for table body border */
+.prose tbody:last-child tr:last-child td {
+  border-bottom: none;
+}
+
+/* every second of table has red color */
+.prose tbody tr:nth-child(2n) {
+  background-color: #11111190; /* Darker background for every second row */
 }
