@@ -22,7 +22,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: SITE_CONFIG.name,
+  title: {
+    template: `${SITE_CONFIG.name} | %s`,
+    default: SITE_CONFIG.name,
+    absolute: SITE_CONFIG.url,
+  },
   description: SITE_CONFIG.description,
   alternates: {
     types: {

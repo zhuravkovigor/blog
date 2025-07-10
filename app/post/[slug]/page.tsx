@@ -2,17 +2,36 @@ import GenerateFog from "@/components/parts/GenerateFog";
 import CodeViewer from "@/components/ui/CodeViewer";
 import Container from "@/components/ui/Container";
 import { TableCell, TableViewer } from "@/components/ui/table";
-import { getPost } from "@/lib/services";
+import { getPost, getPosts } from "@/lib/services";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 type PageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 };
 
-export default async function ({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const post = await getPost({
+    where: { slug },
+  });
+
+  return {
+    title: post?.title || "Post not found",
+    description: post?.description || "No description available",
+  };
+}
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const posts = await getPosts(); // по аналогии с getPost
+
+  return posts.map((p) => ({ slug: p.slug }));
+}
+
+export const revalidate = 60;
+export const dynamicParams = true;
+
+export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   const post = await getPost({
     where: { slug },
@@ -30,8 +49,7 @@ export default async function ({ params }: PageProps) {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                code(props) {
-                  const { children, className, ...rest } = props;
+                code({ children, className, ...rest }) {
                   const match = /language-(\w+)/.exec(className || "");
                   return match ? (
                     <CodeViewer className={className}>
@@ -43,15 +61,11 @@ export default async function ({ params }: PageProps) {
                     </code>
                   );
                 },
-                table(props) {
-                  const { children } = props;
+                table({ children }) {
                   return <TableViewer>{children}</TableViewer>;
                 },
-                th() {
-                  return null; // Скрываем заголовки таблицы
-                },
-                td(props) {
-                  const { children } = props;
+                th: () => null,
+                td({ children }) {
                   return <TableCell>{children}</TableCell>;
                 },
               }}

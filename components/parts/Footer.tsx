@@ -8,13 +8,13 @@ export default function Footer() {
     <footer className="bg-zinc-900 border-t border-zinc-800">
       <Container>
         <div className="flex justify-between h-24 items-center py-6">
-          <div className="flex gap-2 items-center">
-            <LogoIcon size={2} />
+          <div className="flex gap-3 items-center">
+            <LogoIcon size={2.2} />
 
-            <div className="flex gap-0.5 flex-col">
+            <div className="flex gap-1 flex-col">
               <div className="text-xs text-zinc-200">
                 © {new Date().getFullYear()} Zhuravkov Igor
-              </div>
+              </div>  
               <span className="text-xs text-zinc-500">Crafter with 🩶</span>
             </div>
           </div>

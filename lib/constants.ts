@@ -13,7 +13,7 @@ export const APP_ROUTES = {
 export const DEFAULT_STYLE_UNIT_TYPE: AvailableUnits = "rem";
 
 export const SITE_CONFIG = {
-  name: "Blog",
+  name: "My Blog",
   description: "Мой блог",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: "Автор блога",
