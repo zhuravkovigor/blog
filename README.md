@@ -20,6 +20,39 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## SEO Features
+
+This blog includes the following SEO features:
+
+### RSS Feed
+
+- **URL**: `/rss.xml`
+- Automatically generated RSS feed with all published posts
+- Includes title, description, publication date, and permalink for each post
+- Proper XML formatting with UTF-8 encoding
+
+### Sitemap
+
+- **URL**: `/sitemap.xml`
+- Dynamic sitemap generation including:
+  - Homepage with highest priority
+  - All published blog posts with their last modification dates
+  - Proper change frequency and priority settings
+
+### Robots.txt
+
+- **URL**: `/robots.txt`
+- Search engine crawler instructions
+- Allows all pages except API routes
+- References the sitemap location
+
+### Configuration
+
+- Site configuration centralized in `lib/constants.ts`
+- Environment variables in `.env.local` for site URL
+- Metadata includes RSS feed link in HTML head
+- Footer includes links to RSS and sitemap
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
