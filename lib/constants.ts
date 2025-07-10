@@ -5,6 +5,9 @@ export const APP_ROUTES = {
   POST_BY_SLUG: "/post/:slug",
   GITHUB: "http://github.com",
   YOUTUBE: "http://youtube.com",
+  SITEMAP: "/sitemap.xml",
+  SUPPORT_ME: "http://buymeacoffee.com/zhuravkovigor",
+  RSS: "/rss.xml",
 } as const;
 
 export const DEFAULT_STYLE_UNIT_TYPE: AvailableUnits = "rem";

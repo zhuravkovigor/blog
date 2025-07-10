@@ -1,5 +1,6 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CopyButton from "./CopyButton";
 
 interface CodeViewerProps {
   children: string;
@@ -21,9 +22,13 @@ export default function CodeViewer({
 
   return (
     <div className="bg-zinc-900 p-1 mt-9 rounded-2xl border-2 border-zinc-800/50">
-      <span className="text-xs px-2 py-2 block text-zinc-400 font-bold">
-        {detectedLanguage}
-      </span>
+      <div className="flex items-center justify-between px-2 py-2">
+        <span className="text-xs block text-zinc-400 font-bold">
+          {detectedLanguage}
+        </span>
+        <CopyButton>{String(children).replace(/\n$/, "")}</CopyButton>
+      </div>
+
       <SyntaxHighlighter
         PreTag="div"
         language={detectedLanguage}

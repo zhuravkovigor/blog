@@ -13,7 +13,7 @@ export default function Fog(props: FogProps) {
     {
       "top-0 bg-gradient-to-b from-[var(--background)] via-[var(--background)]/90 to-transparent":
         side === "top",
-      "bottom-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/60 to-transparent":
+      "bottom-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent":
         side === "bottom",
       "opacity-100": show,
       "opacity-0": !show,
