@@ -1,3 +1,4 @@
+import Footer from "@/components/parts/Footer";
 import Header from "@/components/parts/Header";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Rubik } from "next/font/google";
@@ -36,6 +37,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
