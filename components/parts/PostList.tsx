@@ -36,7 +36,7 @@ export default async function PostList(props: PostListProps) {
     <div className={postListClassNames}>
       {years.map((year) => (
         <div key={year} className="flex flex-col gap-4">
-          <h2 className="text-xl px-4 font-semibold text-zinc-400 pb-2 sticky top-8 z-20  border-b border-transparent">
+          <h2 className="text-xl px-4 font-semibold text-zinc-300 pb-2 sticky top-8 z-20  border-b border-transparent">
             {year}
           </h2>
           <div className="flex flex-col gap-1">

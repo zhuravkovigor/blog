@@ -32,7 +32,7 @@ export default function Post(props: PostProps) {
           <h2 className="text-sm" aria-label="Post title">
             {title}
           </h2>
-          <p className="text-sm text-zinc-500" aria-label="Post description">
+          <p className="text-sm text-zinc-400" aria-label="Post description">
             {description}
           </p>
         </div>
