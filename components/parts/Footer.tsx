@@ -5,16 +5,16 @@ import CustomLink from "../ui/CustomLink";
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-900 border-t border-zinc-800">
+    <footer className="bg-black/10 border-t border-zinc-900">
       <Container>
         <div className="flex justify-between h-24 items-center py-6">
           <div className="flex gap-3 items-center">
-            <LogoIcon size={2.2} />
+            <LogoIcon size={2} className="text-zinc-400" />
 
             <div className="flex gap-1 flex-col">
               <div className="text-xs text-zinc-200">
                 © {new Date().getFullYear()} Zhuravkov Igor
-              </div>  
+              </div>
               <span className="text-xs text-zinc-500">Crafter with 🩶</span>
             </div>
           </div>
