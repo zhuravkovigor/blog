@@ -74,7 +74,7 @@ export default async function Page({ params }: PageProps) {
         <h1 className="text-zinc-300 text-3xl font-medium">{post?.title}</h1>
       </div>
       <GenerateFog />
-      <main className=" max-w-3xl">
+      <main>
         {post?.content && (
           <div className="prose max-w-none">
             <ReactMarkdown

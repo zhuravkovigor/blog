@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default async function () {
   return (
-    <Container className="pb-32 pt-8">
+    <Container className="pb-32 pt-32">
       <GenerateFog />
       <PostList
         settings={{
