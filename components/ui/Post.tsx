@@ -25,7 +25,7 @@ export default function Post(props: PostProps) {
         aria-label={`Article: ${title}`}
         tabIndex={0}
       >
-        <p className="text-sm text-zinc-700" aria-label="Post date">
+        <p className="text-sm text-zinc-600" aria-label="Post date">
           {formatShortDate(createdAt)}
         </p>
         <div className="flex flex-col gap-2">
