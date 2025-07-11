@@ -22,16 +22,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    template: `${SITE_CONFIG.name} | %s`,
-    default: SITE_CONFIG.name,
-    absolute: SITE_CONFIG.url,
-  },
+  title: "The blog of Igor Zhuravkov",
   description: SITE_CONFIG.description,
   alternates: {
     types: {
       "application/rss+xml": `${SITE_CONFIG.url}/rss.xml`,
     },
+  },
+  openGraph: {
+    type: "website",
+    title: "The blog of Igor Zhuravkov",
+    description: SITE_CONFIG.description,
+    url: SITE_CONFIG.url,
+    siteName: SITE_CONFIG.name,
+    locale: SITE_CONFIG.language,
+    images: [
+      {
+        url: `${SITE_CONFIG.url}/cover.jpg`,
+        width: 1200,
+        height: 630,
+        alt: SITE_CONFIG.description,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    images: [`${SITE_CONFIG.url}/cover.jpg`],
   },
   robots: {
     index: true,

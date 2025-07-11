@@ -11,15 +11,43 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+import { SITE_CONFIG } from "@/lib/constants";
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const post = await getPost({
     where: { slug },
   });
 
+  const title = post?.title || "Post not found";
+  const description = post?.description || "No description available";
+  const imageUrl = `${SITE_CONFIG.url}/cover.jpg`;
+
   return {
-    title: post?.title || "Post not found",
-    description: post?.description || "No description available",
+    title,
+    description,
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url: `${SITE_CONFIG.url}/post/${slug}`,
+      siteName: SITE_CONFIG.name,
+      locale: SITE_CONFIG.language,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
