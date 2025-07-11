@@ -1,4 +1,5 @@
 import GenerateFog from "@/components/parts/GenerateFog";
+import StickyTitle from "@/components/parts/StickyTitle";
 import CodeViewer from "@/components/ui/CodeViewer";
 import Container from "@/components/ui/Container";
 import { TableCell, TableViewer } from "@/components/ui/table";
@@ -39,11 +40,13 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <Container className="pb-32">
-      <div className="flex flex-col sticky z-20 top-0 gap-1 pt-8">
-        <h2 className="text-xl text-zinc-300 font-medium">{post?.title}</h2>
+      <StickyTitle title={post?.title} />
+
+      <div className="flex flex-col pt-44 gap-1">
+        <h1 className="text-zinc-300 text-3xl font-medium">{post?.title}</h1>
       </div>
       <GenerateFog />
-      <main className="mt-44 max-w-3xl">
+      <main className=" max-w-3xl">
         {post?.content && (
           <div className="prose max-w-none">
             <ReactMarkdown
